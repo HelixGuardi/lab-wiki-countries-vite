@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function HomePage() {
 
@@ -24,8 +25,11 @@ function HomePage() {
           >country listed</a> */}
           {countries.map((eachCountries) => {
             return(
-              <a key={eachCountries._id} href="/" className="list-group-item list-group-item-action"
-              >{eachCountries.name.common}</a> 
+              <Link to={`/${eachCountries.alpha3Code}`} key={eachCountries._id}>
+                <img src={`https://flagpedia.net/data/flags/icon/72x54/${eachCountries.alpha2Code.toLowerCase()}.png`} />
+                <p className="list-group-item list-group-item-action"
+                >{eachCountries.name.common}</p> 
+              </Link>
             )
           })}
       </div>
